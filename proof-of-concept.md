@@ -1,24 +1,25 @@
 # Proof of Concept - CSS Animation Playground
 
-## Idea Reference
-- Number: 98
-- Title: CSS Animation Playground
-- Description: A UI where users can tweak variables and export CSS `@keyframes`.
+## Scope
+- App category: Business & Commerce
+- Entity model: Css Animation Order
+- Deployable stack: Flask + SQLAlchemy + Gunicorn + Docker + CI
 
-## PoC Scope
-- App boots with Flask + SQLite persistence
-- CRUD flow works via web UI (`/`, `/items/new`, `/items/<id>/edit`)
-- API endpoints return valid JSON (`/api/health`, `/api/items`)
-- Deployability assets included (`Dockerfile`, `docker-compose.yml`, `Procfile`)
+## Dynamic Field Configuration
+- Client Name: `client_name` (text)
+- Estimated Value: `estimated_value` (number)
+- Delivery Notes: `delivery_notes` (textarea)
 
-## Run Evidence (to capture)
+## Run Evidence Commands
 ```bash
 python app.py
 curl http://localhost:5000/api/health
-curl -X POST http://localhost:5000/api/items -H "Content-Type: application/json" -d '{"title": "Demo item", "details": "Created from PoC command", "status": "active"}'
-curl http://localhost:5000/api/items
+curl http://localhost:5000/api/schema
+curl -X POST http://localhost:5000/api/records   -H "Content-Type: application/json"   -d '{"title":"Demo Record","status":"quoted","payload":{"client_name":"Demo value","estimated_value":12,"delivery_notes":"seed note"}}'
+curl http://localhost:5000/api/metrics
 ```
 
 ## Metadata
-- Generated UTC: 2026-03-24T15:35:11.869250+00:00
-- Status: Deployable full-template scaffold complete
+- Idea number: 24
+- Generated UTC: 2026-03-24T15:52:21.905989+00:00
+- Status: Phase-2 complete
